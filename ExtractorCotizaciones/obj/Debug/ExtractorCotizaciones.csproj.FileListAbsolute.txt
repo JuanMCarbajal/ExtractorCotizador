@@ -1,0 +1,7 @@
+D:\Cotizaciones\ExtractorCotizaciones\ExtractorCotizaciones\bin\Debug\ExtractorCotizaciones.exe.config
+D:\Cotizaciones\ExtractorCotizaciones\ExtractorCotizaciones\bin\Debug\ExtractorCotizaciones.exe
+D:\Cotizaciones\ExtractorCotizaciones\ExtractorCotizaciones\bin\Debug\ExtractorCotizaciones.pdb
+D:\Cotizaciones\ExtractorCotizaciones\ExtractorCotizaciones\obj\Debug\ExtractorCotizaciones.csprojResolveAssemblyReference.cache
+D:\Cotizaciones\ExtractorCotizaciones\ExtractorCotizaciones\obj\Debug\ExtractorCotizaciones.csproj.CoreCompileInputs.cache
+D:\Cotizaciones\ExtractorCotizaciones\ExtractorCotizaciones\obj\Debug\ExtractorCotizaciones.exe
+D:\Cotizaciones\ExtractorCotizaciones\ExtractorCotizaciones\obj\Debug\ExtractorCotizaciones.pdb

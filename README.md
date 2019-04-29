@@ -1,0 +1,2 @@
+# ExtractorCotizador
+Extrae las cotizaciones.

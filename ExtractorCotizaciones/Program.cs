@@ -18,6 +18,23 @@ namespace ExtractorCotizaciones
 
             //Extraer información del XML
             List<string> Links = GetCollectionLinks();
+            List<string> ListHtml = new List<string>();
+
+            HttpWebRequest request;
+            HttpWebResponse response;
+
+            foreach (var link in Links)
+            {
+                request = (HttpWebRequest)WebRequest.Create(link);
+                request.Method = "GET";
+                response = (HttpWebResponse)request.GetResponse();
+                ListHtml.Add(new StreamReader(response.GetResponseStream()).ReadToEnd());
+            }
+
+            for(int i=0; i<ListHtml.Count; i++)
+            {
+                ListHtml[i] = ListHtml[i].Substring(ListHtml[i].IndexOf("<tbody"), ListHtml[i].IndexOf("</tbody") - ListHtml[i].IndexOf("<tbody")).Trim();
+            }
 
             Console.ReadLine();
             /*
@@ -57,7 +74,7 @@ namespace ExtractorCotizaciones
 
             foreach (XElement link in links)
             {
-                retorno.Add(link.ToString());
+                retorno.Add(link.ToString().Replace("<link>", "").Replace("</link>", "").Replace("&amp;", "&"));
             }
 
             return retorno;

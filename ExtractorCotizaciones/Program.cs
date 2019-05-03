@@ -19,7 +19,7 @@ namespace ExtractorCotizaciones
             //Extraer información del XML
             List<string> Links = GetCollectionLinks();
             List<string> ListHtml = new List<string>();
-
+            string Auxiliar;
             HttpWebRequest request;
             HttpWebResponse response;
 
@@ -30,10 +30,19 @@ namespace ExtractorCotizaciones
                 response = (HttpWebResponse)request.GetResponse();
                 ListHtml.Add(new StreamReader(response.GetResponseStream()).ReadToEnd());
             }
-
+            
             for(int i=0; i<ListHtml.Count; i++)
             {
-                ListHtml[i] = ListHtml[i].Substring(ListHtml[i].IndexOf("<tbody"), ListHtml[i].IndexOf("</tbody") - ListHtml[i].IndexOf("<tbody")).Trim();
+                if(i == 0)
+                {
+                    Auxiliar = ListHtml[i];
+                    ListHtml[i] = ListHtml[i].Substring(ListHtml[i].IndexOf("<div id=\"tablaDolar\""), ListHtml[i].IndexOf("</div>\r\n\r\n     <div id=\"tablaEuro\"") + 6 - ListHtml[i].IndexOf("<div id=\"tablaDolar\""));
+                    ListHtml[i] += Auxiliar.Replace(ListHtml[i], "").Substring(Auxiliar.Replace(ListHtml[i], "").IndexOf("<div id=\"tablaEuro\""), Auxiliar.Replace(ListHtml[i], "").IndexOf("</div>\r\n\r\n</div>") + 6 - Auxiliar.Replace(ListHtml[i], "").IndexOf("<div id=\"tablaEuro\""));
+                } else
+                {
+                    ListHtml[i] = ListHtml[i].Substring(ListHtml[i].IndexOf("<tbody"), ListHtml[i].IndexOf("</tbody") + 8 - ListHtml[i].IndexOf("<tbody")).Trim();
+                }
+                
             }
 
             Console.ReadLine();
